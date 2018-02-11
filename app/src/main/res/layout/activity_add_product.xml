@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mRootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:scrollbars="vertical"
+    app:layout_scrollFlags="scroll"
+    tools:context="com.graphycode.farmconnectdemo.Activities.AddProduct">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:layout_margin="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="#008975">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/prod_nameField"
+                            android:inputType="text"
+                            android:hint="@string/product_name"
+                            android:textColor="#263238" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="#008975">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/priceField"
+                            android:inputType="text"
+                            android:hint="Price"
+                            android:textColor="#263238" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="10dp"
+                        android:orientation="horizontal"
+                        android:layout_weight="3">
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColorHint="#008975"
+                            android:layout_weight="1.5">
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/quantityField"
+                                android:inputType="text"
+                                android:hint="Quantity"
+                                android:textColor="#263238" />
+                        </android.support.design.widget.TextInputLayout>
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/measure"
+                            android:background="@drawable/spinner_bg"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1.5">
+
+                        </android.support.v7.widget.AppCompatSpinner>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+                        <!--<TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:textColor="#008975"
+                            android:layout_marginLeft="5dp"
+                            android:textSize="18sp"
+                            android:text="Category"
+                            android:layout_weight="1.5"/>-->
+
+                        <android.support.v7.widget.AppCompatSpinner
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/spinnerCat"
+                            android:background="@drawable/spinner_bg">
+                        </android.support.v7.widget.AppCompatSpinner>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+                    <!--<TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#008975"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="18sp"
+                        android:text="Location"
+                        android:layout_weight="1.5"/>-->
+
+                        <Button
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/location_btn"
+                            android:background="@drawable/spinner_bg"
+                            android:layout_gravity="center_vertical"
+                            android:text="-- Select Location ---"/>
+
+                    <!--<android.support.v7.widget.AppCompatSpinner
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/locSpinner"
+                        android:background="@drawable/spinner_bg"
+                        android:layout_gravity="center_vertical">
+                    </android.support.v7.widget.AppCompatSpinner>-->
+
+                    </LinearLayout>
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="#008975">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/farm_nameField"
+                            android:inputType="text"
+                            android:hint="Farm Name"
+                            android:textColor="#263238" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <!-- Second cardview Product descriptions -->
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:layout_margin="5dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColorHint="#008975">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/desField"
+                            android:inputType="textMultiLine"
+                            android:hint="Description"
+                            android:textColor="#263238" />
+                    </android.support.design.widget.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/audio_layout"
+                        android:visibility="gone"
+                        android:padding="2dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4">
+
+                        <TextView
+                            android:id="@+id/txt_aud_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="3"
+                            android:maxEms="1"
+                            android:paddingLeft="5dp"
+                            android:singleLine="true"
+                            android:text="Add Audio "
+                            android:textColor="#008975"
+                            android:textSize="18sp" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:padding="10dp"
+                            android:id="@+id/mic"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/ic_mic_black_24dp"
+                            android:background="?android:attr/selectableItemBackground"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:padding="10dp"
+                            android:id="@+id/aud_attachment"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/ic_attach_file_black_24dp"
+                            android:background="?android:attr/selectableItemBackground"/>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:id="@+id/view"
+                        android:visibility="gone"
+                        android:background="#008975"/>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/video_layout"
+                        android:visibility="gone"
+                        android:padding="2dp"
+                        android:orientation="horizontal"
+                        android:weightSum="4">
+
+                        <TextView
+                            android:id="@+id/txt_vid_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="3"
+                            android:maxEms="1"
+                            android:paddingLeft="5dp"
+                            android:singleLine="true"
+                            android:text="Add Video "
+                            android:textColor="#008975"
+                            android:textSize="18sp" />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:padding="10dp"
+                            android:id="@+id/video"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/ic_videocam_black_24dp"
+                            android:background="?android:attr/selectableItemBackground"/>
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:padding="10dp"
+                            android:id="@+id/attachment_vid"
+                            android:layout_weight="0.5"
+                            android:src="@drawable/ic_attach_file_black_24dp"
+                            android:background="?android:attr/selectableItemBackground"/>
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/txt_more"
+                        android:textColor="#008975"
+                        android:padding="5dp"
+                        android:textSize="18sp"
+                        android:text="more.."
+                        android:layout_margin="5dp"
+                        android:layout_gravity="bottom|right"
+                        android:background="?android:attr/selectableItemBackground"/>
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:layout_margin="5dp">
+
+                <!--<ImageButton
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:scaleType="centerCrop"
+                    android:id="@+id/img_select"
+                    android:src="@drawable/ic_add_white_24dp"/>-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="2dp"
+                    android:orientation="horizontal"
+                    android:weightSum="4">
+
+                    <TextView
+                        android:id="@+id/txt_img_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_weight="3"
+                        android:maxEms="1"
+                        android:paddingLeft="5dp"
+                        android:singleLine="true"
+                        android:text="Add Image "
+                        android:textColor="#008975"
+                        android:textSize="18sp" />
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="10dp"
+                        android:id="@+id/camera"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/ic_camera_alt_black_24dp"
+                        android:background="?android:attr/selectableItemBackground"/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="10dp"
+                        android:id="@+id/attachment"
+                        android:layout_weight="0.5"
+                        android:src="@drawable/ic_attach_file_black_24dp"
+                        android:background="?android:attr/selectableItemBackground"/>
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <Button
+                android:id="@+id/add_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/background_signup"
+                android:text="Add Product"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

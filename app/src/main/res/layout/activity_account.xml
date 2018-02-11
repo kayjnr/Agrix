@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.graphycode.farmconnectdemo.Activities.AccountActivity">
+
+   <android.support.v4.widget.NestedScrollView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:orientation="vertical"
+           android:layout_marginTop="5dp">
+           <!-- first row -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/profile_layout"
+               android:padding="15dp"
+               android:orientation="horizontal"
+               android:background="?android:attr/selectableItemBackground">
+               <android.support.v7.widget.CardView
+                   android:layout_width="100dp"
+                   android:layout_height="100dp"
+                   app:cardElevation="0dp"
+                   android:padding="10dp">
+                   <ImageView
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:id="@+id/profile_img"
+                       android:scaleType="centerCrop"
+                       android:src="@drawable/ic_account_circle_black_48dp"/>
+
+               </android.support.v7.widget.CardView>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/name"
+                   android:layout_gravity="center_vertical"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="10dp"
+                   android:textSize="20sp"
+                   android:text=""
+                   android:textStyle="bold"/>
+           </LinearLayout>
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:background="#008975" />
+           <!-- second row -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/change_pass_layout"
+               android:padding="20dp"
+               android:orientation="horizontal"
+               android:background="?android:attr/selectableItemBackground">
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:scaleType="centerCrop"
+                   android:layout_gravity="center_vertical"
+                   android:src="@drawable/ic_vpn_key_black_24dp"
+                   android:padding="5dp"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_vertical"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="10dp"
+                   android:textSize="20sp"
+                   android:text="Change Password"
+                   android:textStyle="bold"/>
+           </LinearLayout>
+           <!-- third row -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/change_email_layout"
+               android:padding="20dp"
+               android:orientation="horizontal"
+               android:background="?android:attr/selectableItemBackground">
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:scaleType="centerCrop"
+                   android:layout_gravity="center_vertical"
+                   android:src="@drawable/ic_email_black_24dp"
+                   android:padding="5dp"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_vertical"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="10dp"
+                   android:textSize="20sp"
+                   android:text="Change Email"
+                   android:textStyle="bold"/>
+           </LinearLayout>
+
+           <!-- fourth row -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/change_number_layout"
+               android:padding="20dp"
+               android:orientation="horizontal"
+               android:background="?android:attr/selectableItemBackground">
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:scaleType="centerCrop"
+                   android:layout_gravity="center_vertical"
+                   android:src="@drawable/ic_call_black_24dp"
+                   android:padding="5dp"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_vertical"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="10dp"
+                   android:textSize="20sp"
+                   android:text="Change Number"
+                   android:textStyle="bold"/>
+           </LinearLayout>
+
+           <!-- fifth row -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/myProduct_layout"
+               android:padding="20dp"
+               android:orientation="horizontal"
+               android:background="?android:attr/selectableItemBackground">
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:scaleType="centerCrop"
+                   android:layout_gravity="center_vertical"
+                   android:src="@drawable/ic_view_list_black_24dp"
+                   android:padding="5dp"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_vertical"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="10dp"
+                   android:textSize="20sp"
+                   android:text="My Products"
+                   android:textStyle="bold"/>
+           </LinearLayout>
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:background="#008975"
+               android:layout_marginTop="5dp"/>
+           <!-- last row -->
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:id="@+id/logout_layout"
+               android:padding="20dp"
+               android:layout_marginBottom="20dp"
+               android:orientation="horizontal"
+               android:background="?android:attr/selectableItemBackground">
+               <ImageView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:scaleType="centerCrop"
+                   android:layout_gravity="center_vertical"
+                   android:src="@drawable/ic_exit_to_app_black_24dp"
+                   android:padding="5dp"/>
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_gravity="center_vertical"
+                   android:layout_weight="1"
+                   android:layout_marginLeft="10dp"
+                   android:textSize="20sp"
+                   android:text="Log Out"
+                   android:textStyle="bold"/>
+           </LinearLayout>
+       </LinearLayout>
+   </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

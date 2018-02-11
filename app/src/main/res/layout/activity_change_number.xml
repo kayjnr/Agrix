@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.graphycode.farmconnectdemo.Activities.ChangeNumberActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_call_black_48dp"
+        android:layout_above="@+id/layout_container"
+        android:layout_marginBottom="60dp"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_container"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
+        android:padding="15dp"
+        android:layout_margin="10dp"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="20dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/old_number"
+                android:hint="Old number"
+                android:layout_margin="5dp"
+                android:inputType="phone"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/new_number"
+                android:hint="New number"
+                android:layout_margin="5dp"
+                android:inputType="phone"/>
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/save"
+        android:text="Save Changes"
+        android:textColor="#FFFFFF"
+        android:layout_below="@id/layout_container"
+        android:layout_margin="10dp"
+        android:background="@drawable/background_signup"/>
+
+
+</RelativeLayout>

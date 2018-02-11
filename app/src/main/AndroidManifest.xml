@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.graphycode.farmconnectdemo">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:name=".FarmConnectApp">
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.graphycode.agrix.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+        <meta-data
+            android:name="android.support.FILE_PROVIDER_PATHS"
+            android:resource="@xml/filepath" />
+        </provider>
+        <activity
+            android:name=".Activities.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".Activities.RegisterActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".Activities.MainActivity"
+            android:label=""
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.ProductInfoActivity"
+            android:parentActivityName=".Activities.MainActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Activities.AccountActivity"
+            android:label="Dashboard"
+            android:parentActivityName=".Activities.MainActivity" />
+        <activity
+            android:name=".Activities.ChangePassActivity"
+            android:label="Change Password"
+            android:parentActivityName=".Activities.AccountActivity" />
+        <activity
+            android:name=".Activities.ChangeEmailActivity"
+            android:label="Change Email"
+            android:parentActivityName=".Activities.AccountActivity" />
+        <activity
+            android:name=".Activities.MyAdsActivity"
+            android:label="My Ads"
+            android:parentActivityName=".Activities.AccountActivity" />
+        <activity
+            android:name=".Activities.AddProduct"
+            android:label="Add Product"
+            android:parentActivityName=".Activities.MyAdsActivity" />
+        <activity
+            android:name=".Activities.ProfileActivity"
+            android:label="Profile"
+            android:parentActivityName=".Activities.AccountActivity" />
+        <activity
+            android:name=".Activities.ChangeNameActivity"
+            android:label="Change Name"
+            android:parentActivityName=".Activities.AccountActivity" />
+        <activity
+            android:name=".Activities.ChangeNumberActivity"
+            android:label="Change Number"
+            android:parentActivityName=".Activities.AccountActivity" />
+        <activity
+            android:name=".Activities.EditProduct"
+            android:label="Edit Product"
+            android:parentActivityName=".Activities.MyAdsActivity"></activity>
+        <activity
+            android:name=".Activities.ForgotPasswordActivity"
+            android:label="Reset Password"
+            android:parentActivityName=".Activities.LoginActivity">
+
+        </activity>
+    </application>
+
+</manifest>

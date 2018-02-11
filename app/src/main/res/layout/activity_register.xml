@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="18dp"
+    android:paddingRight="18dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp"
+    android:background="#ECEFF1"
+    tools:context="com.graphycode.farmconnectdemo.Activities.RegisterActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:paddingTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerInParent="true">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:scaleType="fitXY" />
+
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#008975"
+                android:layout_marginTop="10dp">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/fName_txtField"
+                    android:singleLine="true"
+                    android:hint="@string/hint_fname"
+                    android:drawableRight="@drawable/ic_person_outline_black_24dp"
+                    android:paddingRight="10dp"
+                    android:drawableTint="#008975"
+                    android:textColor="#263238"
+                    android:background="@android:color/transparent"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#008975"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#008975">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/lName_txtField"
+                    android:singleLine="true"
+                    android:hint="@string/hint_lname"
+                    android:drawableRight="@drawable/ic_person_outline_black_24dp"
+                    android:paddingRight="10dp"
+                    android:drawableTint="#008975"
+                    android:textColor="#263238"
+                    android:background="@android:color/transparent"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#008975"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#008975">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/email_txtField"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/hint_email"
+                    android:drawableRight="@drawable/ic_mail_outline_green_50_24dp"
+                    android:paddingRight="10dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#263238"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#008975"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"/>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColorHint="#008975">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/phone_txtField"
+                    android:inputType="phone"
+                    android:hint="Phone"
+                    android:drawableRight="@drawable/ic_call_black_24dp"
+                    android:paddingRight="10dp"
+                    android:background="@android:color/transparent"
+                    android:textColor="#263238"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#008975"
+                android:layout_marginTop="15dp" />
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="#008975"
+                android:textColorHint="#008975">
+
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pass_txtField"
+                    android:inputType="textPassword"
+                    android:hint="@string/hint_password"
+                    android:background="@android:color/transparent"
+                    android:textColor="#263238"/>
+            </android.support.design.widget.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#008975" />
+
+            <Button
+
+                android:id="@+id/signup_btn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/fieldsContainer"
+                android:background="@drawable/background_login"
+                android:text="@string/btn_sign_up"
+                android:textColor="#008975"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="10dp"/>
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_login"
+                android:background="@drawable/background_signup"
+                android:text="@string/btn_login"
+                android:textColor="#FFFFFF"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
