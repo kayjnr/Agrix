@@ -1,11 +1,16 @@
 package com.graphycode.farmconnectdemo.Activities;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.FragmentManager;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Environment;
@@ -15,19 +20,25 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -215,7 +226,9 @@ public class AddProduct extends AppCompatActivity {
                         /*Toast.makeText(AddProduct.this,
                                 "Audio Added Successfully", Toast.LENGTH_LONG).show();*/
                         audName.setText("Stopped.....");
-                        if (audUri != null){
+
+                        showConfirmAudioPopup(audUri);
+/*                        if (audUri != null){
                             mProgress.setMessage("Processing..");
                             mProgress.show();
                             StorageReference filePath = audStorage.child("Product_Audio")
@@ -229,7 +242,7 @@ public class AddProduct extends AppCompatActivity {
 
                                 }
                             });
-                        }
+                        }*/
                         longRelease = false;
                         audName.setText("Add Audio");
                     }
@@ -401,16 +414,19 @@ public class AddProduct extends AppCompatActivity {
             String ap = file.getAbsolutePath();
             String mimeType = getContentResolver().getType(imageUri);
             //imgName.setText(ap +" "+mimeType);
-            Toast.makeText(AddProduct.this,
-                    "Image Added Successfully", Toast.LENGTH_LONG).show();
+            showConfirmImagePopup(imageUri);
+/*            Toast.makeText(AddProduct.this,
+                    "Image Added Successfully", Toast.LENGTH_LONG).show();*/
         }else if (requestCode == CAMERA_REQUEST && resultCode == RESULT_OK){
-            Toast.makeText(AddProduct.this,
-                    "Image Added Successfully", Toast.LENGTH_LONG).show();
+            showConfirmImagePopup(imageUri);
+            /*Toast.makeText(AddProduct.this,
+                    "Image Added Successfully", Toast.LENGTH_LONG).show();*/
             //imgName.setText(f.getName());
 
         }else if (requestCode == AUDIO_REQUEST && resultCode == RESULT_OK){
             audUri = data.getData();
-            if (audUri != null){
+            showConfirmAudioPopup(audUri);
+/*            if (audUri != null){
                 mProgress.setMessage("Processing..");
                 mProgress.show();
                 StorageReference filePath = audStorage.child("Product_Audio")
@@ -424,14 +440,15 @@ public class AddProduct extends AppCompatActivity {
 
                     }
                 });
-            }
+            }*/
             //File file = new File((audUri.getPath()));
             //String ap = file.getAbsolutePath();
             audName.setText("Add Audio");
             /*Toast.makeText(AddProduct.this, "Audio Added Successfully"+audUri, Toast.LENGTH_LONG).show();*/
         }else  if (requestCode == GALLERY_VID_REQUEST && resultCode == RESULT_OK){
             vidUri = data.getData();
-            if (vidUri != null){
+            showConfirmVideoPopup(vidUri);
+/*            if (vidUri != null){
                 mProgress.setMessage("Processing..");
                 mProgress.show();
                 StorageReference filepath = vidStorage.child("Product_video")
@@ -444,14 +461,15 @@ public class AddProduct extends AppCompatActivity {
                         Toast.makeText(AddProduct.this, "Video Added Successfully", Toast.LENGTH_SHORT).show();
                     }
                 });
-            }
+            }*/
             //File file = new File((vidUri.getPath()));
             //String ap = file.getName();
             //vidName.setText(ap);
             /*Toast.makeText(AddProduct.this, "Video Added Successfully"+vidUri,Toast.LENGTH_LONG).show();*/
         }else if (requestCode == REQUEST_VIDEO_CAPTURE && resultCode == RESULT_OK){
             vidUri = data.getData();
-            if (vidUri != null){
+            showConfirmVideoPopup(vidUri);
+/*            if (vidUri != null){
                 mProgress.setMessage("Processing..");
                 mProgress.show();
                 StorageReference filepath = vidStorage.child("Product_video")
@@ -464,7 +482,7 @@ public class AddProduct extends AppCompatActivity {
                         Toast.makeText(AddProduct.this, "Video Added Successfully", Toast.LENGTH_SHORT).show();
                     }
                 });
-            }
+            }*/
             //File file = new File((vidUri.getPath()));
             //String ap = file.getName();
             //vidName.setText(ap);
@@ -611,6 +629,218 @@ public class AddProduct extends AppCompatActivity {
     ///////  Date Format ////////
     private String StampTime() {
         return new SimpleDateFormat("EEE, MMM d, \"yy", Locale.UK).format(new Date());
+    }
+
+    private void showConfirmImagePopup(final Uri uri) {
+        AlertDialog.Builder imagePopup = new AlertDialog.Builder(this);
+
+        @SuppressLint("InflateParams")
+        View view = getLayoutInflater().inflate(R.layout.dialog_image_preview, null);
+
+        ImageView imageView = view.findViewById(R.id.imagePreview_image);
+        imageView.setImageURI(uri);
+
+        imagePopup.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                Toast.makeText(AddProduct.this,
+                        "Image saved Successfully", Toast.LENGTH_LONG).show();
+            }
+        });
+
+        imagePopup.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                imageUri = null;
+
+                Toast.makeText(AddProduct.this,"Image Deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        imagePopup.setTitle("Image Preview");
+        imagePopup.setView(view);
+        imagePopup.show();
+    }
+
+
+    private void showConfirmAudioPopup(final Uri uri) {
+        AlertDialog.Builder audioPopup = new AlertDialog.Builder(this);
+
+        @SuppressLint("InflateParams")
+        View view = getLayoutInflater().inflate(R.layout.dialog_audio_preview, null);
+
+        final Button play = view.findViewById(R.id.audioPreview_btnPlay);
+        Button stop = view.findViewById(R.id.audioPreview_btnStop);
+
+        final MediaPlayer mediaPlayer = new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!mediaPlayer.isPlaying()){
+                    try {
+                        mediaPlayer.setDataSource(getApplicationContext(), uri);
+                        mediaPlayer.prepare();
+
+                    }catch (IOException e){
+                       e.printStackTrace();
+                    }
+                    mediaPlayer.start();
+                    play.setBackgroundResource(R.drawable.ic_pause_black_24dp);
+                }else {
+                    mediaPlayer.pause();
+                    play.setBackgroundResource(R.drawable.ic_play_arrow_black_24dp);
+                }
+            }
+        });
+
+        stop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaPlayer != null && mediaPlayer.isPlaying()){
+                    mediaPlayer.stop();
+                    mediaPlayer.reset();
+
+                    play.setBackgroundResource(R.drawable.ic_play_arrow_black_24dp);
+
+                }
+            }
+        });
+
+        mediaPlayer.setOnCompletionListener(new OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mediaPlayer) {
+
+
+                // Stop and reset mediaPlayer
+                mediaPlayer.stop();
+                mediaPlayer.reset();
+
+
+                // Set mediaPlayer's state to stopped and and set the
+                // inflated view's play button's text to 'Play'.
+                //isPaused = false;
+                play.setBackgroundResource(R.drawable.ic_play_arrow_black_24dp);
+            }
+        });
+
+        audioPopup.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                if (audUri != null){
+                    mProgress.setMessage("Saving..");
+                    mProgress.show();
+                    StorageReference filePath = audStorage.child("Product_Audio")
+                            .child("new_audio.mp3");
+                    filePath.putFile(audUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            audDownloadUri = taskSnapshot.getDownloadUrl();
+                            mProgress.dismiss();
+                            Toast.makeText(AddProduct.this, "Audio Saved Successfully", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
+                }
+            }
+        });
+
+        audioPopup.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+                audUri = null;
+
+                Toast.makeText(AddProduct.this,"Audio Deleted", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        audioPopup.setTitle("Audio File");
+        audioPopup.setView(view);
+        audioPopup.show();
+    }
+
+
+    private void showConfirmVideoPopup(final Uri mCurrentVideoUri) {
+        AlertDialog.Builder videoPopup = new AlertDialog.Builder(this);
+
+        @SuppressLint("InflateParams")
+        View view = getLayoutInflater().inflate(R.layout.dialog_video_preview, null);
+
+        final VideoView videoView = view.findViewById(R.id.videoPreview_video);
+        final FrameLayout mediaControllerWrapper =
+                view.findViewById(R.id.videoPreview_mediaControllerWrapper);
+
+        videoView.setVideoURI(mCurrentVideoUri);
+
+        videoView.requestFocus();
+
+        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            MediaController mediacontroller;
+
+            public void onPrepared(MediaPlayer mediaPlayer) {
+
+                mediaPlayer.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener() {
+                    @Override
+                    public void onVideoSizeChanged(MediaPlayer mediaPlayerInner,
+                                                   int width, int height) {
+
+                        // Add mediaController
+                        mediacontroller = new MediaController(videoView.getContext());
+                        videoView.setMediaController(mediacontroller);
+
+                        // Anchor it to videoView
+                        mediacontroller.setAnchorView(videoView);
+
+                        // Remove mediaController from its parent layout
+                        ((ViewGroup) mediacontroller.getParent()).removeView(mediacontroller);
+
+                        // Add media controller to the FrameLayout below videoView
+                        mediaControllerWrapper.addView(mediacontroller);
+                        mediacontroller.setVisibility(View.VISIBLE);
+                        mediacontroller.show(0);
+                    }
+                });
+                videoView.start();
+            }
+        });
+
+        videoPopup.setPositiveButton("Save", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Display audio saved message
+                if (vidUri != null){
+                    mProgress.setMessage("Saving..");
+                    mProgress.show();
+                    StorageReference filepath = vidStorage.child("Product_video")
+                            .child("new video.mp4");
+                    filepath.putFile(vidUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            vidDownloadUri = taskSnapshot.getDownloadUrl();
+                            mProgress.dismiss();
+                            Toast.makeText(AddProduct.this, "Video Added Successfully", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        });
+
+        videoPopup.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                Toast.makeText(AddProduct.this, "Video Deleted", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        videoPopup.setTitle("Video Preview");
+        videoPopup.setCancelable(false);
+        videoPopup.setView(view);
+        videoPopup.show();
     }
 
 }
