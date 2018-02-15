@@ -85,9 +85,6 @@ public class MainActivity extends AppCompatActivity {
         SearchFilter();
         LaunchAccountActivity();
 
-        /*Intent intent = getIntent();
-        finish();
-        startActivity(intent);*/
 
     }
 

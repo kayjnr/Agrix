@@ -1,13 +1,20 @@
 package com.graphycode.farmconnectdemo.Activities;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -33,9 +40,10 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         mProgress =  new ProgressDialog(this);
 
         btnReset.setOnClickListener(new View.OnClickListener() {
-            String e = email.getText().toString().trim();
+
             @Override
             public void onClick(View v) {
+                String e = email.getText().toString().trim();
                 if (!TextUtils.isEmpty(e)){
                     mProgress.setMessage("Resetting Password");
                     mProgress.show();
@@ -44,10 +52,12 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 mProgress.dismiss();
-                                Toast.makeText(ForgotPasswordActivity.this,
+                                /*Toast.makeText(ForgotPasswordActivity.this,
                                         "Check Your Mail To Reset Password",
-                                        Toast.LENGTH_LONG).show();
+                                        Toast.LENGTH_LONG).show();*/
+                                showResetConfirmPopup();
                             }else {
+
                                 mProgress.dismiss();
                                 Toast.makeText(ForgotPasswordActivity.this,
                                         "Password Reset Failed",
@@ -65,5 +75,24 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 }
             }
         });
+
+    }
+
+    private void showResetConfirmPopup(){
+        AlertDialog.Builder PasswordResetConfirm = new AlertDialog.Builder(this);
+
+        @SuppressLint("InflateParams")
+        View view = getLayoutInflater().inflate(R.layout.resetconfirm, null);
+
+        PasswordResetConfirm.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                startActivity(new Intent(ForgotPasswordActivity.this, LoginActivity.class));
+            }
+        });
+
+        PasswordResetConfirm.setTitle("Reset Password Confirmation");
+        PasswordResetConfirm.setView(view);
+        PasswordResetConfirm.show();
     }
 }

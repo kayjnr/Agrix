@@ -27,7 +27,8 @@
         </provider>
         <activity
             android:name=".Activities.SplashActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -45,15 +46,18 @@
         <activity
             android:name=".Activities.MainActivity"
             android:label=""
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activities.ProductInfoActivity"
             android:parentActivityName=".Activities.MainActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activities.AccountActivity"
             android:label="Dashboard"
-            android:parentActivityName=".Activities.MainActivity" />
+            android:parentActivityName=".Activities.MainActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activities.ChangePassActivity"
             android:label="Change Password"
@@ -69,7 +73,8 @@
         <activity
             android:name=".Activities.AddProduct"
             android:label="Add Product"
-            android:parentActivityName=".Activities.MyAdsActivity" />
+            android:parentActivityName=".Activities.MyAdsActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activities.ProfileActivity"
             android:label="Profile"
